@@ -1,0 +1,237 @@
+
+.logoutbody{
+    font-family: 'Times New Roman', Times, serif;
+    padding: 20px;
+    margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    border-radius: 15px;
+    height: auto;
+    background-color: aliceblue;
+    text-align: center;
+}
+input{
+    font-family: 'Times New Roman', Times, serif;
+    padding: 6px;
+    border-radius: 4px;
+    color:white;
+    background-color: black;
+    border: 0.3px solid rgb(255, 255, 255);
+    transition: color 0.75s ease,background-color 0.75s ease,border 0.75s ease;
+}
+button{
+    font-family: 'Times New Roman', Times, serif;
+    padding: 6px;
+    border-radius: 4px;
+    color:white;
+    background-color: black;
+    border: 0.3px solid rgb(255, 255, 255);
+    transition: color 0.75s ease,background-color 0.75s ease,border 0.75s ease;
+}
+input:hover{
+    color: black;
+    background-color: white;
+    border: 0.3px solid black;
+}
+button:hover
+{
+    color: black;
+    background-color: white;
+    border: 0.3px solid black;
+}
+body {
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    background: rgb(240,248,255);
+    background: linear-gradient(90deg, rgba(240,248,255,1) 0%, rgba(168,190,255,1) 90%);
+    overflow-x: hidden;
+}
+
+
+.topnav {
+    width: 100%;
+    background-color: #f0f8ff;
+    overflow: hidden;
+    height: 73.5px;
+}
+
+.topnav a {
+    float: right;
+    display: block;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 27.5px;
+    margin-left: 10px;
+    font-size: 13.5px;
+    margin-right: 10px;
+}
+.topnav a:hover
+{
+    text-decoration: underline;
+}
+.topnav a:first-child {
+    float: left;
+    margin-left: 50px; /* Remove margin-left for the first child to keep it aligned to the left */
+}
+
+.main {
+    padding: 20px;
+}
+
+.content{
+    display: none;
+}
+
+.content.active {
+    display: block;
+}
+.exp
+{
+    margin-top: 10px;
+    margin-left: 5px;
+    color: red;
+}
+.appoint
+{
+    padding:10px;
+    width: 100%;
+    position: absolute;
+    display: flex; /* Use Flexbox */
+    flex-wrap: wrap; /* Allow wrapping to next line */
+    justify-content: center;
+    max-width: 100%;
+}
+.appbox {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: white;
+    width: calc(25% - 10px); /* Adjust as needed for four boxes in a row */
+    max-width: 400px;
+    margin-right: 20px;
+}
+
+.appid, .docname, .field, .date, .time, .booking_timestamp {
+    margin: 5px 0;
+    padding: 5px;
+}
+
+.appid {
+    font-weight: bold;
+    color: #333;
+}
+
+.docname {
+    color: #007bff;
+}
+
+.field {
+    color: #28a745;
+}
+
+.date, .time, .booking_timestamp {
+    color: #6c757d;
+}
+
+.past-appointment {
+    background-color: rgb(240, 240, 240); /* Greyish background for past appointments */
+    color: rgb(240, 240, 240); /* Greyish text for past appointments */
+}
+.patient-details {
+border: 1px solid #ccc;
+padding: 20px;
+margin: 20px auto; /* Use 'auto' for the left and right margins to center the element */
+background-color: #f9f9f9;
+width: 400px;
+border-radius: 6px;
+}
+.patient-details h2 {
+margin-top: 10px;
+}
+.patient-details p {
+margin: 20px 0;
+width: 400px;
+font-size: 15px;
+}
+.patient-details .label {
+font-weight: bold;
+color: #333;
+}
+.patient-details input, .patient-details select {
+margin-left: 10px;
+}
+.patient-details input[readonly], .patient-details select[disabled] {
+background-color: #e9ecef;
+color: #495057;
+}
+        /* Prescription box styles */
+        .presc-box {
+            margin-left: 100px;
+            border: 1px solid #ccc; /* Border */
+            border-radius: 5px; /* Rounded corners */
+            padding: 15px; /* Padding */
+            margin-bottom: 20px; /* Add some space between prescription boxes */
+            background-color: #fff; /* Background color */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow */
+            width: 900px;
+        }
+
+        /* Prescription ID style */
+        .presc-id {
+            font-weight: bold; /* Bold font weight */
+            margin-bottom: 10px; /* Add space below prescription ID */
+        }
+
+        /* Patient name style */
+        .patient-name {
+            font-style: italic; /* Italic font style */
+            margin-bottom: 5px; /* Add space below patient name */
+        }
+
+        /* Doctor name style */
+        .doctor-name {
+            font-weight: bold; /* Bold font weight */
+            margin-bottom: 5px; /* Add space below doctor name */
+        }
+
+        /* Medicine container style */
+        .medicine-container {
+            display: flex; /* Use flexbox */
+            flex-wrap: wrap; /* Wrap items to the next line if necessary */
+            margin-bottom: 10px; /* Add space below medicine images */
+        }
+
+        /* Medicine item style */
+        .medicine-item {
+            margin-right: 35px; /* Add margin between images */
+            margin-bottom: 20px; /* Add space below each medicine item */
+            margin-top: 20px;
+        }
+
+        .medicine-item img {
+            margin: auto; 
+            max-width: 100px;
+            max-height: 100px;
+            object-fit: contain; 
+            border-radius: 6px;
+        }
+
+        /* Quantity style */
+        .quantity {
+            font-weight: bold; /* Bold font weight */
+        }   
+        .presc-head
+        {
+            font-size: 28px;
+        }
+        .image-con
+        {
+            height: 110px;
+        }
+        .total-price
+        {
+            margin: auto;
+        }

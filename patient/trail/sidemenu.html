@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed Side Menu</title>
+    <style>
+        body {
+            margin: 0;
+            font-family:'Times New Roman', Times, serif;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+        .sidenav a.mayo
+        {
+            color: white;
+        }
+        .sidenav a {
+            padding: 15px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #818181;
+            display: block;
+            font-size: 16.5px;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .main {
+            margin-left: 250px; /* Same as the width of the sidenav */
+            padding: 20px;
+        }
+
+        .content {
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidenav">
+        <a class = "mayo">MAYO</a>
+        <a href="#details" onclick="showContent('details')">DETAILS</a>
+        <a href="#prescriptions" onclick="showContent('prescriptions')">PRESCRIPTIONS</a>
+        <a href="#appointments" onclick="showContent('appointments')">APPOINTMENTS</a>
+        <a href="#logout" onclick="showContent('logout')">LOGOUT</a>
+    </div>
+
+    <div class="main">
+        <section id="details" class="content active">
+            <h3>Details</h3>
+            <p>Information about details goes here.</p>
+        </section>
+        <section id="prescriptions" class="content">
+            <h3>Prescriptions</h3>
+            <p>Information about prescriptions goes here.</p>
+        </section>
+        <section id="appointments" class="content">
+            <h3>Appointments</h3>
+            <p>Information about appointments goes here.</p>
+        </section>
+        <section id="logout" class="content">
+            <h3>Logout</h3>
+            <p>Logout section.</p>
+        </section>
+    </div>
+
+    <script>
+        function showContent(id) {
+            // Hide all content
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Show the selected content
+            const selectedContent = document.getElementById(id);
+            selectedContent.classList.add('active');
+        }
+    </script>
+</body>
+</html>

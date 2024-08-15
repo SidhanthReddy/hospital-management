@@ -1,0 +1,409 @@
+body{
+    background: linear-gradient(90deg,rgb(241, 246, 248) 0%, rgb(226, 242, 247) 30%,rgb(211, 235, 255) 65%);
+    position: relative;
+    overflow-x: hidden;
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /*padding: 1.73rem 7%;*/
+    padding: 1.73rem;
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+    margin: 0;
+
+}
+.logo{
+    margin-left: 30px;
+}
+.arrow {
+    border: solid black;
+    border-width: 0 1px 1px 0; 
+    display: inline-block;
+    padding: 2px; /* Adjust padding for arrow size */
+    margin-bottom: 2.35px; 
+    margin-left: 1px; 
+    transition: transform 0.3s ease;
+    transform-origin: center;
+}
+
+.arrow.right {
+    transform: rotate(-45deg); /* Rotate arrow to point right */
+}
+
+.medbtn:hover .arrow.right {
+    transform: rotate(45deg); /* Rotate arrow to point down on hover */
+}
+
+.labbtn:hover .arrow.right {
+    transform: rotate(45deg); /* Rotate arrow to point down on hover */
+}
+.recbtn:hover .arrow.right {
+    transform: rotate(45deg); /* Rotate arrow to point down on hover */
+}
+.profilebtn:hover .arrow.right
+    {
+        transform: rotate(45deg);
+    }
+
+
+.header a
+{
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.log,
+.con {
+    font-size: 13.5px;
+}
+
+.med,
+.lab,
+.rec,
+.log,
+.profile {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+
+.medcon,
+.labcon,
+.reccon,
+.logcon,.profile-con{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: auto;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 1);
+    z-index: 1;
+    flex-direction: column;
+}
+
+.medcon a,
+.labcon a,
+.reccon a,
+.logcon a,
+.profile-con a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    background-color: aliceblue;
+    font-family:'Times New Roman', Times, serif;
+}
+
+.medcon a:hover,
+.labcon a:hover,
+.reccon a:hover,
+.logcon a:hover,
+.profile-con a:hover {
+    background-color: rgba(225, 239, 252, 0.967);
+}
+
+    .medbtn:hover + .medcon,
+    .labbtn:hover + .labcon,
+    .recbtn:hover + .reccon,
+    .logbtn:hover + .logcon,
+    .profilebtn:hover + .profile-con {
+        display: flex;
+    }
+    .medbtn:focus  .arrow.right,
+    .labbtn:focus  .arrow.right,
+    .recbtn:focus  .arrow.right,
+    .logbtn:focus  .arrow.right,
+    .profilebtn:focus  .arrow.right {
+        transform: rotate(45deg);
+    }
+    .medbtn:focus + .medcon,
+    .labbtn:focus + .labcon,
+    .recbtn:focus + .reccon,
+    .logbtn:focus + .logcon,
+    .profilebtn:focus + .profile-con {
+        display: flex;
+        top: 100%; /* Position the content box below the button */
+    }
+
+
+.logo {
+    
+    margin-right: 750px;
+}
+
+.con {
+    margin-right: 30px;
+}
+
+.medbtn,
+.labbtn,
+.recbtn,.profilebtn {   
+    margin-right: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family:'Times New Roman', Times, serif;
+}
+.medbtn:hover,
+.labbtn:hover,
+.recbtn:hover,
+.con:hover,.log:hover,.profilebtn:hover
+{
+    text-decoration: underline;
+} 
+.recbtn
+{
+font-size: 13.5px;
+}
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-end;
+    position: fixed;
+    top:27px;
+    right: 40px;
+}
+
+@media (max-width: 800px) {
+    .flex-container {
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+.searchbar  
+{
+    background-color: azure;
+    color: rgb(0, 0, 0);
+    margin-top:100px;
+    margin-bottom: 50px;
+    left: 50%;
+    right: 50%;
+    padding:10px;
+    width: 420px;  
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    margin-top: 20vh;
+    border-radius: 6px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Responsive adjustments */
+    max-width: 90%; /* Set a maximum width */
+}
+.search{
+    width: 250px;
+    padding: 10px 10px 10px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(248, 253, 253);
+}
+.searchbut {
+    all: unset;
+    cursor: pointer;
+    margin-left: 10px;
+    width: 11.54px;
+    height: 20px;
+  }
+/* CSS styling for the container */
+.doccontainer {
+    margin-top:200px;
+    padding:10px;
+    width: 100%;
+    height: auto; 
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    border-radius: 6px;
+    position: absolute;
+    display: flex; /* Use Flexbox */
+    flex-wrap: wrap; /* Allow wrapping to next line */
+    justify-content: center;
+    /* Responsive adjustments */
+    max-width: 100%; /* Set a maximum width */
+}
+
+/* CSS styling for the div boxes */
+.doctor-box {
+    background-color: azure;
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    padding: 10px 0px 10px 10px;
+    margin: 10px;
+    width: calc(25% - 10px); /* Adjust as needed for four boxes in a row */
+    max-width: 400px;
+    margin-right: 20px;
+}
+.doctor-box .appointment_btn {
+    background-color: rgb(219, 236, 251);
+    color: rgb(63, 61, 61);
+    width: calc(90% - 20px);
+    border: none; 
+    margin-left: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 16px;
+    border-radius: 20px;
+    margin-top: 10px ;
+    transition: background-color 0.35s ease,color 0.35s ease;
+    cursor: pointer;
+}
+.doctor-box p{
+    margin-left: 29px;
+}
+.doctor-box .appointment_btn:hover
+{
+    background-color: rgb(198, 228, 254);
+    color: rgb(0, 0, 0);
+}/* Modal container */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    right: 0;
+    top: 0;
+    width: 500px; 
+    height: 100%;
+    background-color: #fff; 
+}
+.modaldocname, .modalfield {
+    background-color: #fff;     
+    position: relative;
+    top: 10%; 
+    font-size: 26.5px;
+    width: auto;
+    max-width: 600px; 
+    padding-right: 0px;
+    padding-left: 40px;
+}
+.confirm-div
+{
+    margin-top: 15px;
+    width: auto;
+    padding-right: 0px;
+    padding-left: 40px;
+    position: relative;
+    top: 10%; 
+    max-width: 600px; 
+    
+}
+.confirm
+{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", 
+    Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    padding: 10px;
+    border: none;
+    background-color: #000;
+    color: #fff; 
+    border-radius: 4px;
+    font-size: 16.5px;
+    cursor: pointer;    
+    
+}
+/* Modal styles */
+.loginmodal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 36.5%; /* Center horizontally */
+    top: 36.5%; /* Center vertically */
+    width: 500px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.logincontent {
+    background-color: azure;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 20px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    width: 80%; /* Take full width of the parent */
+    height: 70%; /* Take full height of the parent */
+    text-align: center;
+}
+
+.clogin {
+    margin-top: 12px;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.clogin:hover,
+.clogin:focus {
+    color: rgb(255, 21, 21);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Close button styles */
+.close {
+    color: #000000;
+    margin-left: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.35s ease;
+}
+.iframeDiv
+{
+    margin-left:30px;
+}
+.register_btn
+{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 10px;
+    border: none;
+    font-size: 15px;
+    background-color: #000;
+    color: #fff; 
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;    
+}
+.fieldFilter
+{
+    border: none;
+    margin-top: 5px;
+    padding: 5px;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    background-color: azure;
+    margin-left:10.5px ;
+    width: 123px;
+
+}
+.fieldFilter::-webkit-scrollbar
+{
+    display:none;
+}
+.sort
+{
+    margin-left: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+}
+.sortCriterion
+{
+    border: 0.25px solid black;
+    border-radius: 3px;
+    padding: 2px;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    background-color: azure;
+}
+.sortOrder{
+    border: 0.25px solid black;
+    border-radius: 3px;
+    padding: 2px;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    background-color: azure;
+}

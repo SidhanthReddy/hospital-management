@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curvy Dotted Line Animation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 2000px; /* to enable scrolling */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            position: absolute;
+        }
+
+        .left {
+            left: 50px;
+        }
+
+        .right {
+            right: 50px;
+        }
+
+        #box1 {
+            top: 300px;
+        }
+
+        #box2 {
+            top: 800px;
+        }
+
+        #box3 {
+            top: 1300px;
+        }
+
+        #dotted-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2000px;
+            pointer-events: none; /* allows clicks to pass through */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box left" id="box1"></div>
+        <div class="box right" id="box2"></div>
+        <div class="box left" id="box3"></div>
+    </div>
+    <canvas id="dotted-line"></canvas>
+    <script>
+        function drawCurvyLine(context, startX, startY, endX, endY, opacity) {
+            const controlX = (startX + endX) / 2;
+            const controlY = Math.min(startY, endY) - 200; // control point above the line for curvature
+
+            context.globalAlpha = opacity;
+            context.moveTo(startX, startY);
+            context.quadraticCurveTo(controlX, controlY, endX, endY);
+        }
+
+        document.addEventListener('scroll', () => {
+            const canvas = document.getElementById('dotted-line');
+            const context = canvas.getContext('2d');
+            const box1 = document.getElementById('box1').getBoundingClientRect();
+            const box2 = document.getElementById('box2').getBoundingClientRect();
+            const box3 = document.getElementById('box3').getBoundingClientRect();
+
+            const startX1 = box1.left + box1.width / 2;
+            const startY1 = box1.top + window.scrollY + box1.height / 2;
+            const endX2 = box2.left + box2.width / 2;
+            const endY2 = box2.top + window.scrollY + box2.height / 2;
+            const startX3 = box3.left + box3.width / 2;
+            const startY3 = box3.top + window.scrollY + box3.height / 2;
+
+            canvas.width = window.innerWidth;
+            canvas.height = document.body.scrollHeight;
+
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            const scrollFraction = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+            const lineOpacity = Math.min(1, scrollFraction * 2); // Fade in over first half of scroll
+
+            context.setLineDash([5, 15]);
+            context.beginPath();
+            drawCurvyLine(context, startX1, startY1, endX2, endY2, lineOpacity);
+            drawCurvyLine(context, endX2, endY2, startX3, startY3, lineOpacity);
+            context.strokeStyle = 'black';
+            context.lineWidth = 2;
+            context.stroke();
+        });
+
+        // Initial draw on page load
+        document.dispatchEvent(new Event('scroll'));
+    </script>
+</body>
+</html>

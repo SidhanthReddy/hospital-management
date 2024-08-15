@@ -1,0 +1,410 @@
+   
+   body {
+        height:5000px;
+        background: rgb(241, 246, 248);
+        overflow-x: hidden;
+    }
+
+    body::-webkit-scrollbar
+    {
+       display: none;
+        
+    }
+
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1.73rem;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        align-items: center;
+        z-index: 100;
+        margin: 0;
+    }
+
+    .logo{
+        margin-left: 30px;
+    }
+    
+    .arrow {
+        border: solid black;
+        border-width: 0 1px 1px 0; 
+        display: inline-block;
+        padding: 2px; 
+        margin-bottom: 2.35px; 
+        margin-left: 1px; 
+        transition: transform 0.3s ease;
+        transform-origin: center;
+    }
+
+    .arrow.right {
+        transform: rotate(-45deg); 
+    }
+
+    .medbtn:hover .arrow.right {
+        transform: rotate(45deg); /* Rotate arrow to point down on hover */
+    }
+
+    .labbtn:hover .arrow.right {
+        transform: rotate(45deg); /* Rotate arrow to point down on hover */
+    }
+
+    .recbtn:hover .arrow.right {
+        transform: rotate(45deg); /* Rotate arrow to point down on hover */
+    }
+    .profilebtn:hover .arrow.right
+    {
+        transform: rotate(45deg);
+    }
+
+    a
+    {
+        color: inherit;
+        text-decoration: inherit;
+    }
+
+    .log,
+    .con {
+        font-size: 13.25px;
+    }
+
+    .med,
+    .lab,
+    .rec,
+    .log,
+    .profile {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .medcon,
+    .labcon,
+    .reccon,
+    .logcon,
+    .profile-con {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: auto;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 1);
+    z-index: 1;
+    flex-direction: column; 
+    }
+
+    .medcon a,
+    .labcon a,
+    .reccon a,
+    .logcon a,
+    .profile-con a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    background-color: aliceblue;
+    font-family: 'Times New Roman', Times, serif;
+    }
+
+    .medcon a:hover,
+    .labcon a:hover,
+    .reccon a:hover,
+    .logcon a:hover ,
+    .profile-con a:hover{
+        background-color: rgba(225, 239, 252, 0.967);
+    }
+
+    .medbtn:focus  .arrow.right,
+    .labbtn:focus  .arrow.right,
+    .recbtn:focus  .arrow.right,
+    .logbtn:focus  .arrow.right,
+    .profilebtn:focus  .arrow.right {
+        transform: rotate(45deg);
+    }
+    .medbtn:hover + .medcon,
+    .labbtn:hover + .labcon,
+    .recbtn:hover + .reccon,
+    .logbtn:hover + .logcon,
+    .profilebtn:hover + .profile-con,
+    .medbtn:focus + .medcon,
+    .labbtn:focus + .labcon,
+    .recbtn:focus + .reccon,
+    .logbtn:focus + .logcon,
+    .profilebtn:focus + .profile-con {
+        display: flex;
+        top: 100%;
+    }
+    
+
+    .logo {
+        
+        margin-right: 750px;
+    }
+
+    .con{
+        margin-right: 30px;
+    }
+    .medbtn,
+    .labbtn,
+    .recbtn,
+    .profilebtn {   
+    margin-right: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    }
+    .medbtn:hover,
+    .labbtn:hover,
+    .recbtn:hover,
+    .con:hover,.log:hover,.profilebtn:hover
+    {
+        text-decoration: underline;
+    } 
+   .recbtn,.profilebtn,.medbtn,.labbtn
+   {
+    font-size: 13px;
+   }
+   
+    .flex-container {
+        display: flex;
+        flex-direction: row;
+        justify-content:flex-end;
+        position: fixed;
+        top:27px;
+        right: 40px;
+    }
+
+    @media (max-width: 800px) {
+        .flex-container {
+                flex-direction: column;
+                justify-content: space-between;
+                width:100%;
+            }
+        }
+    
+    .slideshow-container {
+        max-width: 100%;
+        max-height: 800px;
+        position: relative;
+        margin: auto;
+        overflow: hidden;
+        border-radius: 8px;
+        margin-top: 75px;
+    }
+
+    .text {
+            background-color: rgb(212, 229, 244);
+            color: rgb(0, 0, 0);
+            font-size: 35px;
+            font-family: 'Times New Roman', Times, serif;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: auto;
+            padding: 10px; /* Adjust padding as needed */
+            box-sizing: border-box; /* Ensure padding is included in width calculation */
+            border: 1px solid rgba(255, 255, 255, 0); /* Subtle border */
+            border-radius: 4px;
+            -webkit-text-stroke: 0.35px black;
+            mix-blend-mode: screen;
+            flex-wrap: wrap;
+        
+    }
+    .mayo,.spec
+    {  opacity: 0;
+        font-size: 43px;
+        padding-top: 50px;
+        text-align: center;
+        padding-bottom: 2px;
+        margin-bottom: 1px;
+        font-family: 'Times New Roman', Times, serif;
+        transform: translateY(20px);
+        transition: opacity 3s ease, transform 3s ease,font-size 3s ease; 
+
+    }
+    .mayo:hover,.spec:hover{
+        font-size: 45px;
+    }
+    .quote{
+        font-family: 'Times New Roman', Times, serif;
+        text-align: center;
+        padding-top: 3px;
+        margin-top: 1px;
+        padding-left: 260px;
+        font-style: italic;
+        opacity: 0;
+        transform: translateY(20px);
+        transition:opacity 3s ease, transform 3s ease,font-size 3s ease;
+    }
+    .quote:hover
+    {
+        font-size: 17px;
+    }
+    .mayo.active,.spec.active
+    {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .quote.active{
+        opacity: 0.78;
+        transform: translateY(0);
+    }
+    .head1,.head2,.head3,.head4
+    {
+        font-size: 35px;
+        font-family: 'Times New Roman', Times, serif;
+        text-align: center;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; /* Center vertically */ /* Set height to viewport height */
+        margin:30px;
+    }
+    .one,.two,.three,.four
+    { 
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 20px;
+        align-items: center;
+        width: 35%;
+        color: rgba(0, 0, 0, 0.8);
+        margin: 0 auto;
+        background-color:none;
+        border:none;
+        padding: 20px;
+        margin-bottom: 20px;
+        transition: color 0.5s ease;
+        
+    }
+    .one:hover,.two:hover,.three:hover,.four:hover{
+        color: black;
+    }
+    .head1,.head3,.para1,.para11,.para3,.para31
+    {
+        margin-top:-10px;
+        opacity: 0;
+        transition: opacity 0.75s, transform 0.75s; 
+        transform: translateX(-70%) translateY(50%);
+        transition:opacity 2.5s ease,transform 2.5s ease,font-size 0.35s ease;
+    }
+    .head2,.head4,.para2,.para21,.para4,.para41,.worp1,.worp2
+    {
+        margin-top:-10px;
+        opacity: 0;
+        transition: opacity 0.75s, transform 0.75s; 
+        transform: translateX(70%) translateY(50%);
+        transition:opacity 2.5s ease,transform 2.5s ease,font-size 0.35s ease;
+    }
+    .cle1, .cle2 {
+        opacity: 0;
+        transform: translateX(-70%) translateY(50%);
+        transition: opacity 2.5s ease, transform 2.5s ease;
+    }
+    
+    .cle1.active,.cle2.active {
+        opacity: 1; /* Show the paragraph */
+        transform: translateX(-17.5%) translateY(0%);
+    }
+    
+    .head1.active,
+    .head3.active{
+        opacity: 1; /* Show the paragraph */
+        transform: translateX(-40%) translateY(0%);
+    }
+
+    .para1.active,
+    .para11.active,
+    .para3.active,
+    .para31.active  {
+        opacity: 1; /* Show the paragraph */
+        transform: translateX(-40%) translateY(0%);
+    }
+    .head2.active,
+    .head4.active,
+    .worp1.active {
+        opacity: 1; /* Show the paragraph */
+        transform: translateX(40%) translateY(0%);
+    }
+    .para2.active,
+    .para21.active,
+    .para4.active,
+    .para41.active,.worp2.active  {
+        opacity: 1; 
+        transform: translateX(40%) translateY(0%);
+    }
+
+    .head1:hover,
+    .head2:hover,
+    .head3:hover,
+    .head4:hover {
+        font-size: 36px;
+    }
+    .head1:not(.active),
+    .head3:not(.active),
+    .para1:not(.active),
+    .para11:not(.active),
+    .para3:not(.active),
+    .para31:not(.active) {
+        opacity: 0;
+        transform: translateX(-70%) translateY(50%);
+    }
+
+    .head2:not(.active),
+    .head4:not(.active),
+    .para2:not(.active),
+    .para21:not(.active),
+    .para4:not(.active),
+    .para41:not(.active) {
+        opacity: 0;
+        transform: translateX(70%) translateY(50%);
+    }
+   
+    .canvas
+    {
+            margin: 100px;
+            width: 80%;
+            height: 0px;
+            border: 1px solid rgb(0,0,0);
+            margin-top: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            transform:translateY(-100%);
+            opacity: 0;
+            transition:opacity 2.5s ease,transform 2.5s ease,border 2.5s ease;
+    }
+.canvas.active
+{
+    opacity: 1;
+    border: 2px;
+    transform: translateY(0%);
+}
+.pic1,.pic3
+{
+    opacity: 0;
+    transform: translateX(-50%) translateY(50%);
+    transition: opacity 1.5s ease,transform 3s;
+    border-radius: 10px;
+}
+.pic1.active ,.pic3.active
+{
+    opacity: 1;
+    transform: translateX(0%) translateY(0%);
+}
+.pic2
+{
+    opacity: 0;
+    transform: translateX(50%) translateY(50%);
+    transition: opacity 1.5s ease,transform 3s;
+    border-radius: 10px;
+}
+.pic2.active 
+{
+    opacity: 1;
+    transform: translateX(0%) translateY(0%);
+}

@@ -1,0 +1,201 @@
+<link rel="stylesheet" href="http://localhost/wad-project/patient/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="../css/bootstrap.css">
+<link rel="stylesheet" href="../css/bootstrap-responsive.css">
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap-datepicker.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src = "../js/datechooser.js"></script>
+<link rel = "stylesheet" href = "../css/datechooser.css">
+<style>
+  .date-navigation {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 500px;
+  }
+  .date-box-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensure only three boxes are visible */
+  }
+  .date-box {
+    border-radius: 9px;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+    flex: 0 0 auto; /* Allow boxes to shrink */
+    cursor: pointer; /* Make the boxes clickable */
+  }
+  .arrow {
+    cursor: pointer;
+    font-size: 20px;
+  }
+  .selected-date-box {
+    background-color: white;
+    padding: 9px;
+    color: black;
+    border: 1px solid black;
+  }
+  .hidden {
+    display: none;
+    padding: 0;
+    margin: 0;
+    width: 0;
+    height: 0;
+  }
+</style>
+
+<div class="date-navigation">
+  <span class="arrow" id="back-arrow">&#8592;</span>
+  <div class="date-box-container" id="date-boxes">
+    <!-- Date boxes will be generated here -->
+  </div>
+  <span class="arrow" id="next-arrow">&#8594;</span>
+</div>
+
+<script>
+  // Function to format date as dd-mm-yyyy
+  function formatDate(date) {
+    var day = String(date.getDate()).padStart(2, '0');
+    var month = String(date.getMonth() + 1).padStart(2, '0');
+    var year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  }
+
+  // Function to generate date boxes
+  function generateDateBoxes(startDate) {
+    var dateBoxesContainer = document.getElementById('date-boxes');
+    dateBoxesContainer.innerHTML = ''; // Clear existing boxes
+
+    // Loop to generate three boxes with dates
+    for (var i = -1; i <= 1; i++) {
+      var date = new Date(startDate);
+      date.setDate(startDate.getDate() + (i+1));
+
+      // Format date as dd-mm-yyyy
+      var formattedDate = formatDate(date);
+
+      // Create date box element
+      var box = document.createElement('div');
+      box.className = 'date-box';
+      box.textContent = formattedDate;
+
+      // Add click event listener to update the input field and change style
+      box.addEventListener('click', function() {
+        document.getElementById('dp1').value = this.textContent;
+        window.parent.bookAppointmentOnDateSelect(this.textContent);
+        // Remove 'selected-date-box' class from all date boxes
+        document.querySelectorAll('.date-box').forEach(box => {
+          box.classList.remove('selected-date-box');
+        });
+        // Add 'selected-date-box' class to the clicked date box
+        this.classList.add('selected-date-box');
+      });
+
+      // Append box to dateBoxes
+      dateBoxesContainer.appendChild(box);
+    }
+  }
+
+  // Get current date
+  var currentDate = new Date();
+  var endDate = new Date();
+  endDate.setDate(currentDate.getDate() + 9); // Set end date to next ten days
+
+  // Call the function initially
+  generateDateBoxes(currentDate);
+
+  // Event listener for next arrow
+  document.getElementById('next-arrow').addEventListener('click', function() {
+    if (currentDate < endDate) { // Check if not beyond next ten days
+      currentDate.setDate(currentDate.getDate() + 1); // Move to the next day
+      generateDateBoxes(currentDate);
+    }
+  });
+
+  // Event listener for back arrow
+  document.getElementById('back-arrow').addEventListener('click', function() {
+    var today = new Date();
+    if (currentDate > today) { // Check if not before current date
+      currentDate.setDate(currentDate.getDate() - 1); // Move to the previous day
+      generateDateBoxes(currentDate);
+    }
+  });
+</script>
+
+
+<div class="container-fluid px-0 px-sm-4 mx-auto">
+  <form autocomplete="off">
+    <div class="mx-0 mb-0 row justify-content-sm-center justify-content-start px-1">
+      <input type="text" id="dp1" class="datepicker hidden" placeholder="Pick Date" name="date" onchange="window.parent.bookAppointmentOnDateSelect(this.value); window.parent.resetDisabledSlots();" readonly>
+      <script>
+        var datering = document.getElementById('dp1');
+        ("date chosen :"+datering);
+      </script>
+    </div>
+          </div>
+          <div class="card-body p-3 p-sm-5">
+            <p>Morning Slots</p>
+            <div class="row text-center mx-0">
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">09:00AM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">09:15AM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">09:30AM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">09:45AM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">10:00AM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">10:15AM</div></div>
+            </div>
+            <div class="row text-center mx-0">
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">10:30AM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">10:45AM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">11:00AM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">11:15AM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">11:30AM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">11:45AM</div></div>
+            </div>
+            <br>
+            <p>Afternoon Slots</p>
+            <div class="row text-center mx-0">
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">13:30PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">13:45PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">14:00PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">14:15PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">14:30PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">14:45PM</div></div>
+            </div>
+            <div class="row text-center mx-0">
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">15:00PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">15:15PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">15:30PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">15:45PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">16:00PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">16:15PM</div></div>
+            </div>
+            <br>
+            <p>Evening Slots</p>
+            <div class="row text-center mx-0">
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">18:00PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">18:15PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">18:30PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">18:45PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">19:00PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">19:15PM</div></div>
+            </div>
+            <div class="row text-center mx-0">
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">19:30PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">19:45PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">20:00PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">20:15PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">20:30PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">20:45PM</div></div>
+            </div>
+            
+
+              
+            </div>
+          </div>
+        </form>
