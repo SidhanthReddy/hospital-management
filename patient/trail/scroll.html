@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Three Day Date Boxes with Navigation</title>
+<style>
+  .date-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 500px;
+  }
+  .date-box-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensure only three boxes are visible */
+  }
+  .date-box {
+    border-radius: 9px;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+    flex: 0 0 auto; /* Allow boxes to shrink */
+  }
+  .arrow {
+    cursor: pointer;
+    font-size: 20px;
+  }
+</style>
+</head>
+<body>
+  <div class="date-navigation">
+    <span class="arrow" id="back-arrow">&#8592;</span>
+    <div class="date-box-container" id="date-boxes">
+      <!-- Date boxes will be generated here -->
+    </div>
+    <span class="arrow" id="next-arrow">&#8594;</span>
+  </div>
+
+<script>
+  // Function to generate date boxes
+  function generateDateBoxes(startDate) {
+    var dateBoxesContainer = document.getElementById('date-boxes');
+    dateBoxesContainer.innerHTML = ''; // Clear existing boxes
+
+    // Loop to generate three boxes with dates
+    for (var i = -1; i <= 1; i++) {
+      var date = new Date(startDate);
+      date.setDate(startDate.getDate() + (i+1));
+
+      // Format date as yyyy-mm-dd
+      var formattedDate = date.toISOString().split('T')[0];
+
+      // Create date box element
+      var box = document.createElement('div');
+      box.className = 'date-box';
+      box.textContent = formattedDate;
+
+      // Append box to dateBoxes
+      dateBoxesContainer.appendChild(box);
+    }
+  }
+
+  // Get current date
+  var currentDate = new Date();
+  var endDate = new Date();
+  endDate.setDate(currentDate.getDate() + 9); // Set end date to next ten days
+
+  // Call the function initially
+  generateDateBoxes(currentDate);
+
+  // Event listener for next arrow
+  document.getElementById('next-arrow').addEventListener('click', function() {
+    if (currentDate < endDate) { // Check if not beyond next ten days
+      currentDate.setDate(currentDate.getDate() + 1); // Move to the next day
+      generateDateBoxes(currentDate);
+    }
+  });
+
+  // Event listener for back arrow
+  document.getElementById('back-arrow').addEventListener('click', function() {
+    var today = new Date();
+    if (currentDate > today) { // Check if not before current date
+      currentDate.setDate(currentDate.getDate() - 1); // Move to the previous day
+      generateDateBoxes(currentDate);
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .block1 {
+  margin-top: 80px;
+  display: flex;
+  align-items: flex-start; /* Align items to the start to prevent overlap */
+  justify-content: left; /* Align items to the left */
+  padding: 10px;
+  gap: 10px; /* Space between the image and text */
+}
+
+.pic1con {
+  max-width: 490px; /* Adjust the size as needed */
+  height: 600px;
+  border-radius: 10px;
+  overflow: hidden; /* Hides the overflow to keep the zoom effect within bounds */
+  flex-shrink: 0; /* Prevents the container from shrinking */
+}
+
+.pic1 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the entire container */
+  transition: transform 1s ease; /* Smooth transition for the zoom effect */
+}
+
+.pic1con:hover .pic1 {
+  transform: scale(1.15); 
+  border-radius: 10px;/* Zoom in on the image */
+}
+
+.wor {
+  align-self: flex-start; /* Align the text container at the start */
+  margin-top: 100px;
+  width: 550px;
+  margin-left: 40px;
+}
+
+.worp1 {
+  font-size: 30px;
+}
+
+.worp2 {
+  font-size: 20px;
+}
+    .head2,.head4,.para2,.para21,.para4,.para41,.worp1,.worp2
+    {
+        margin-top:-10px;
+        opacity: 0;
+        transition: opacity 0.75s, transform 0.75s; 
+        transform: translateX(70%) translateY(50%);
+        transition:opacity 2.5s ease,transform 2.5s ease,font-size 0.35s ease;
+    }
+    .head2.active,
+    .head4.active,
+    .worp1.active {
+        opacity: 1; /* Show the paragraph */
+        transform: translateX(40%) translateY(0%);
+    }
+    .para2.active,
+    .para21.active,
+    .para4.active,
+    .para41.active,.worp2.active  {
+        opacity: 1; 
+        transform: translateX(40%) translateY(0%);
+    }
+    </style>
+    <div class="block3">
+        <div class="pic1con">
+            <img src="../images/a3.jpg" class="pic1" id="pic1" alt="none">
+          </div>
+          <div class="wor">
+            <p class="worp1">Tender Care</p>
+            <p class="worp2">At Mayo Clinic, we provide care with a motherly touch, ensuring each patient feels nurtured and supported. Our compassionate teams create a comforting and healing environment, offering personalized care that feels like home. Experience the Mayo Clinic difference, where tenderness meets professional excellence.</p>
+          </div>
+        </div>
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Function to check if an element is in the viewport
+            function isInViewport(element) {
+              var rect = element.getBoundingClientRect();
+              return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.left <= (window.innerWidth || document.documentElement.clientWidth)
+              );
+            }
+          
+            // Function to handle scroll event
+            function handleScroll() {
+              var elements = document.querySelectorAll('.spec, .cle1, .cle2, .worp1, .worp2, .mayo, .quote, .head1, .head2, .head3, .head4, .para1, .para11, .para2, .para21, .para3, .para31, .para4, .para41,.canvas');
+          
+              elements.forEach(function(element) {
+                if (isInViewport(element)) {
+                  element.classList.add('active');
+                } //else {
+                //  element.classList.remove('active');
+                //}
+              });
+            }
+          
+          
+            // Add scroll event listener
+            window.addEventListener('scroll', handleScroll);
+          
+            // Initial check for elements on page load
+            handleScroll();
+          });
+        </script>
+</body>
+</html>

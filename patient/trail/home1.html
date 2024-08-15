@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<?php
+session_start(); 
+include('../connect/connection.php');
+if(isset($_SESSION['mail-id'])) {
+  // Prepare and execute the query to fetch the first name based on email
+  $email = $_SESSION['mail-id'];
+  $sql = "SELECT pid,fname FROM login11 WHERE email = ?";
+  $stmt = $connect->prepare($sql);
+  $stmt->bind_param("s", $email);
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  // Check if a row is returned
+  if ($result->num_rows > 0) {
+      $row = $result->fetch_assoc();
+      $_SESSION['fname'] = $row['fname'];
+      $_SESSION['pid']=$row['pid'];
+  }
+}
+?>
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "../css/home1.css">
+    <title>Document</title>
+</head>
+<body>
+    <header class = header>
+        <a href="#" class="logo">MAYO</a>
+      <div class = "op">
+        <div class = "flex-container">
+        
+        <i class='bx bx-menu' id="menu-icon"></i>
+        <div class = "head-elements">
+        <nav class="navbar">
+            <div class="compo">
+            <a href="con.html" class = "con">CONSULT</a>
+            <div class="med">
+                <button class="medbtn">MEDICINES<i class = "arrow right"></i></button>
+                <div class="medcon">
+                <a href="page1.html">Element 1</a>
+                <a href="page2.html">Element 2</a>
+                <a href="page3.html">Element 3</a>
+                </div>
+            </div>
+            <div class="lab">
+                <button class="labbtn">LAB TESTS<i class = "arrow right"></i></button>
+                <div class="labcon">
+                <a href="page1.html">Element 1</a>
+                <a href="page2.html">Element 2</a>
+                <a href="page3.html">Element 3</a>
+                </div>
+            </div>
+            <div class="rec">
+                <a href = "../html/appointment.php"class="recbtn">REQUEST APPOINTMENT</a>
+            </div>          
+             
+            </div>
+        </div>
+        </nav>
+        </div>
+    </header>
+    <div class="slideshow-container">
+
+            <!-- Full-width images with number and caption text -->
+            <div class="mySlides fade">
+              <img src="../images/b1.jpg" style="width:100%">
+              <div class="text"></div>
+            </div>
+            <div class="mySlides fade">
+              <img src="../images/b3.jpg" style="width:100%">
+              <div class="text">WORLD-CLASS HOSPITALITY</div>
+            </div>
+            <div class="mySlides fade">
+                <img src="../images/b4.jpg" style="width:100%">
+                <div class="text">UTMOST CARE</div>
+              </div>
+              <div class="mySlides fade">
+  
+                <img src="../images/b2.jpg" style="width:100%">
+                <div class="text">EXPEDITED MEDICAL RESPONSE</div>
+              </div>
+              <div class="mySlides fade">
+                <img src="../images/b6.jpg" style="width:100%">
+                <div class="text">PHARMATICAL EXPERTISE</div>
+              </div>
+
+              <div class="mySlides fade">
+                <img src="../images/b5.jpg" style="width:100%">
+                <div class="text">"THIS IS WHERE GREATNESS MEETS CARE" </div>
+              </div>
+            <div style="text-align:center">
+                <span class="dot"></span> 
+                <span class="dot"></span> 
+                <span class="dot"></span> 
+            </div>
+          </div>
+          <div class="about">
+          <div>
+            <p class = "mayo">MAYO CLINIC</p>
+            <p class = "quote">-Where Miracles happen everyday</p>
+          </div>
+          
+          <div class = "container">
+          <div class="one">
+          <p class = "head1">Our History</p>
+          <p class = "para1">At Mayo Clinic, our mission is to inspire hope and contribute to health and well-being by providing the best care to every 
+            patient through integrated clinical practice, education, and research.</p>
+            <p class = "para11">We strive to deliver compassionate, 
+            personalized care tailored to each individual's unique needs, fostering healing, innovation, and wellness in our communities and beyond.</p> 
+        </div>
+          <div class="two">
+          <p class = "head2">Our Values</p>
+          <p class = "para2">
+            At Mayo Clinic, we prioritize patient-centered care, teamwork, excellence, integrity, and sustainability. </p>
+           <p class = "para21"> We ensure high-quality care with compassion, respect, and dignity, collaborating across disciplines to innovate and deliver comprehensive solutions. 
+            Upholding ethical standards, we manage resources responsibly to optimize efficiency and promote sustainability.</p>
+        </div>
+        <div class = "three">
+        <p class = "head3">Our Achievements</p>
+         <p class = "para3">
+            Over the years, Mayo Clinic has achieved numerous milestones and accolades, solidifying its reputation as a leader in healthcare innovation and excellence. </p>
+            
+            <p class = "para31">From pioneering medical breakthroughs and surgical innovations to earning top rankings in national and international healthcare assessments, Mayo Clinic's contributions to medicine have made a profound impact on patients' lives worldwide
+         </p>
+        </div>
+        <div class = "four">
+         <p class = "head4">Our Global Impact</p>
+         <p class = "para4">
+            While Mayo Clinic's roots are deeply anchored in Rochester, Minnesota, its influence extends far beyond its home state and the borders of the United States.
+            <p class = "para41">
+             Mayo Clinic has established international collaborations, partnerships, and outreach initiatives aimed at advancing healthcare globally, sharing knowledge, expertise, and best practices with healthcare institutions and providers around the world.
+         </p>
+        </div>
+    </div>
+  </div>
+  <div class="canvas">
+  </div>
+
+
+          
+          
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+
+  slides[slideIndex-1].style.display = "block";  
+
+  setTimeout(showSlides, 2100);
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Function to check if an element is in the viewport
+  function isInViewport(element) {
+    var rect = element.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.left <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
+
+  // Function to handle scroll event
+  function handleScroll() {
+    var elements = document.querySelectorAll('.mayo, .quote, .head1, .head2, .head3, .head4, .para1, .para11, .para2, .para21, .para3, .para31, .para4, .para41,.canvas');
+
+    elements.forEach(function(element) {
+      if (isInViewport(element)) {
+        element.classList.add('active');
+      } else {
+        element.classList.remove('active');
+      }
+    });
+  }
+
+
+  // Add scroll event listener
+  window.addEventListener('scroll', handleScroll);
+
+  // Initial check for elements on page load
+  handleScroll();
+});
+
+
+
+    </script>
+</body>
+</html>

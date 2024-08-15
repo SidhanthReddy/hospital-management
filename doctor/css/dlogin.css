@@ -1,0 +1,72 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevent scrolling */
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Ensure the particles are behind the content */
+}
+
+.lbox {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15%;
+    padding: 15px;
+    border: 0.000025px solid rgba(150, 150, 150, 0.25);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.7); /* Slightly transparent background for the box */
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 1; /* Ensure the content is above the particles */
+}
+
+.mayo {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 28px;
+}
+
+input {
+    margin-top: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    border: 0.1px solid black;
+}
+
+form {
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 20px;
+}
+
+.submit {
+    margin-left: 35%;
+    margin-right: 45%;
+    background-color: rgb(134, 242, 134);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 1px solid rgb(134, 242, 134);
+    border-radius: 10px;
+    font-weight: bolder;
+    color: white;
+    transition: color 0.5s ease, background-color 0.5s ease;
+}
+
+.submit:hover {
+    color: rgb(134, 242, 134);
+    background-color: white;
+}

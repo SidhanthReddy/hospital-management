@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<style>
+    .block2 {
+      margin-top: 60px;
+      display: flex;
+      align-items: flex-start; /* Align items to the start to prevent overlap */
+      justify-content: left; /* Align items to the left */
+      padding: 10px;
+      gap: 20px; /* Increase space between the image and text */
+    }
+    
+    .pic2con {
+      max-width: 490px; /* Adjust the size as needed */
+      height: 600px;
+      overflow: hidden; /* Hides the overflow to keep the zoom effect within bounds */
+      flex-shrink: 0; /* Prevents the container from shrinking */
+      border-radius: 9px; /* Ensures the container has rounded corners */
+    }
+    
+    .pic2 {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensures the image covers the entire container */
+      transition: transform 1s ease; /* Smooth transition for the zoom effect */
+      border-radius: inherit; /* Inherits the border radius from the container */
+    }
+    
+    .pic2con:hover .pic2 {
+      transform: scale(1.2); /* Zoom in on the image */
+    }
+    
+    .cle{
+      align-self: flex-start; /* Align the text container at the start */
+      margin-top: 100px;
+      width:550px;
+      margin-right: 40px;
+    }
+    
+    .aaa {
+      font-size: 30px;
+    }
+    
+    .bbb {
+      font-size: 20px;
+    }
+        .aaa, .bbb {
+        opacity: 1;
+        transform: translateX(-70%) translateY(50%);
+        transition: opacity 2.5s ease, transform 2.5s ease;
+    }
+    
+    .aaa.active ,.bbb.active {
+        opacity: 1; /* Show the paragraph */
+        transform: translateX(-40%) translateY(0%);
+    }
+    </style>
+    <div class="block2">
+        <div class="cle">
+          <p class="aaa">Hygiene Excellence</p>
+          <p class="bbb">At Mayo Clinic, we are dedicated to maintaining the highest standards of cleanliness and hygiene. Our expert teams ensure a safe and pristine environment for all patients, utilizing advanced cleaning protocols and technologies. Experience the Mayo Clinic difference, where hygiene meets excellence.</p>
+        </div>
+        <div class="pic2con">
+          <img src="../images/a2.jpg" class="pic2" id="pic2" alt="none">
+        </div>
+      </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Function to check if an element is in the viewport
+    function isInViewport(element) {
+  const rect = element.getBoundingClientRect();
+  return (
+    rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.bottom >= 0 &&
+    rect.left <= (window.innerWidth || document.documentElement.clientWidth) &&
+    rect.right >= 0
+  );
+}
+  
+    // Function to handle scroll event
+    function handleScroll() {
+  var elements = document.querySelectorAll('.spec, .aaa, .bbb, .worp1, .worp2, .mayo, .quote, .head1, .head2, .head3, .head4, .para1, .para11, .para2, .para21, .para3, .para31, .para4, .para41, .canvas');
+
+  elements.forEach(function(element) {
+    if (isInViewport(element)) {
+      element.classList.add('active');
+    } else {
+      element.classList.remove('active');
+    }
+  });
+}
+  
+  
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+  
+    // Initial check for elements on page load
+    handleScroll();
+  });
+      </script>
+</body>
+</html>
